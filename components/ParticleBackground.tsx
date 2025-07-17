@@ -30,10 +30,14 @@ const ParticleBackground = () => {
       speedY: number;
       opacity: number;
       color: string;
+      canvasWidth: number;
+      canvasHeight: number;
 
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+      constructor(canvasWidth: number, canvasHeight: number) {
+        this.canvasWidth = canvasWidth;
+        this.canvasHeight = canvasHeight;
+        this.x = Math.random() * this.canvasWidth;
+        this.y = Math.random() * this.canvasHeight;
         this.size = Math.random() * 2 + 0.5;
         this.speedX = (Math.random() - 0.5) * 0.5;
         this.speedY = (Math.random() - 0.5) * 0.5;
@@ -46,10 +50,10 @@ const ParticleBackground = () => {
         this.y += this.speedY;
 
         // Wrap around edges
-        if (this.x > canvas.width) this.x = 0;
-        if (this.x < 0) this.x = canvas.width;
-        if (this.y > canvas.height) this.y = 0;
-        if (this.y < 0) this.y = canvas.height;
+        if (this.x > this.canvasWidth) this.x = 0;
+        if (this.x < 0) this.x = this.canvasWidth;
+        if (this.y > this.canvasHeight) this.y = 0;
+        if (this.y < 0) this.y = this.canvasHeight;
 
         // Pulsing effect
         this.opacity = 0.2 + Math.sin(Date.now() * 0.001 + this.x * 0.01) * 0.3;
@@ -75,7 +79,7 @@ const ParticleBackground = () => {
     const particleCount = 100;
 
     for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
+      particles.push(new Particle(canvas.width, canvas.height));
     }
 
     // Mouse interaction
