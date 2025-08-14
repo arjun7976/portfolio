@@ -2,12 +2,45 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import ProjectCard from './ProjectCard';
 
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const projects = [
+    {
+      title: "Lifey – AI Emergency System",
+      description: "AI-powered real-time emergency assistant with voice-triggered alerts, live GPS tracking, and multi-channel SOS notifications. Designed to save lives faster than ever before.",
+      technologies: ["Python", "Flask", "Docker", "AWS", "MongoDB", "Twilio", "Flutter", "Picovoice", "AI"],
+      githubUrl: "https://github.com/arjun7976",
+      liveUrl: "#",
+      featured: true,
+      projectUrl: "/lifey",
+      officialUrl: "https://getlifey.netlify.app/"
+    },
+    {
+      title: "SmartOps Menu Base",
+      description: "SmartOps Menu Base is a centralized Streamlit-based automation hub integrating multiple projects under a single menu-driven interface. It allows easy execution and monitoring of DevOps pipelines, ML models, and AI tasks from one place, improving productivity and workflow efficiency.",
+      technologies: ["Streamlit", "Python", "Docker", "DevOps", "Automation", "Cloud"],
+      githubUrl: "https://github.com/arjun7976/SmartOps_MenuBase_Project",
+      liveUrl: "https://smartopsmenu.streamlit.app/",
+      featured: true,
+      projectUrl: "https://smartopsmenu.streamlit.app/",
+      problemStatement: "Managing multiple AI, Machine Learning, and DevOps projects individually is time-consuming and inefficient. Developers need a centralized interface to monitor, run, and manage various automation tasks seamlessly.",
+      features: [
+        "Single menu-driven interface for multiple projects",
+        "Real-time execution and monitoring of automation scripts",
+        "Integration with AI and ML models",
+        "Dashboard for DevOps pipelines",
+        "User-friendly and responsive UI"
+      ],
+      challengesSolved: [
+        "Eliminates the need to switch between multiple tools",
+        "Reduces deployment and execution errors",
+        "Provides centralized control for automation tasks"
+      ]
+    },
     {
       title: "Linux Command Menu in Docker",
       description: "A Dockerized Bash project that runs an interactive Linux menu for basic system commands. Demonstrates how to package and run Bash scripts inside containers, making system administration tasks more accessible and reproducible.",
@@ -72,14 +105,7 @@ const Projects = () => {
       liveUrl: "#",
       featured: false
     },
-    {
-      title: "LifeLine AI",
-      description: "Emergency voice-trigger app with live video & GPS tracking for instant emergency response.",
-      technologies: ["AI", "Voice Recognition", "GPS", "Real-time"],
-      githubUrl: "https://github.com/arjun7976",
-      liveUrl: "#",
-      featured: true
-    },
+
     {
       title: "MyPermission AI",
       description: "Consent-based data and location control system ensuring user privacy and data security.",
@@ -143,82 +169,21 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <ProjectCard
               key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ 
-                y: -10,
-                transition: { duration: 0.3 }
-              }}
-              className={`group relative ${project.featured ? 'lg:col-span-1' : ''}`}
-            >
-              {/* Glowing Border */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 via-violet-500 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-50 transition-opacity duration-300"></div>
-              
-              {/* Card Content */}
-              <div className="relative bg-gradient-to-br from-gray-900/80 to-purple-900/20 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-8 h-full">
-                {/* Featured Badge */}
-                {project.featured && (
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-violet-500 text-white text-xs font-medium rounded-full">
-                      Featured
-                    </span>
-                  </div>
-                )}
-
-                {/* Project Title */}
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-200 transition-colors duration-300">
-                  {project.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-200 text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-4 mt-auto">
-                  <motion.a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex-1 px-4 py-3 bg-transparent border border-purple-500/50 text-purple-200 text-center rounded-xl hover:border-purple-400 hover:bg-purple-500/10 transition-all duration-300 text-sm font-medium"
-                  >
-                    View Code
-                  </motion.a>
-                  <motion.a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex-1 px-4 py-3 bg-gradient-to-r from-purple-600 to-violet-600 text-white text-center rounded-xl hover:from-purple-500 hover:to-violet-500 transition-all duration-300 text-sm font-medium"
-                  >
-                    Live Demo
-                  </motion.a>
-                </div>
-
-                {/* Decorative Elements */}
-                <div className="absolute top-8 left-8 w-2 h-2 bg-purple-500/50 rounded-full"></div>
-                <div className="absolute bottom-8 right-8 w-3 h-3 border border-violet-500/30 rounded-full"></div>
-              </div>
-            </motion.div>
+              title={project.title}
+              description={project.description}
+              technologies={project.technologies}
+              githubUrl={project.githubUrl}
+              liveUrl={project.liveUrl}
+              featured={project.featured}
+              projectUrl={project.projectUrl}
+              officialUrl={project.officialUrl}
+              problemStatement={project.problemStatement}
+              features={project.features}
+              challengesSolved={project.challengesSolved}
+              index={index}
+            />
           ))}
         </div>
 

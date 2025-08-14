@@ -1,115 +1,150 @@
+// About.tsx
 "use client";
 
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+
+// Animation variants
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+} as const;
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+} as const;
 
 const About = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const highlights = [
-    "Docker", "Jenkins", "LangChain", "Gemini", "Prompt Engineering"
-  ];
-
   return (
-    <section id="about" ref={ref} className="relative py-32 px-6">
+    <section id="about" className="py-20 px-4 relative overflow-hidden bg-gradient-to-b from-gray-900 to-black">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/10 to-black"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
-
+      <div className="absolute inset-0 bg-[url('/images/grid.svg')] bg-center opacity-5"></div>
+      
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section Title */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-7xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-white to-purple-300 bg-clip-text text-transparent">
-              ABOUT ME
-            </span>
+          <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+            About Me
           </h2>
-          <motion.div 
+          <motion.div
             initial={{ scaleX: 0 }}
-            animate={isInView ? { scaleX: 1 } : {}}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-violet-600 mx-auto rounded-full"
-          ></motion.div>
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"
+          />
         </motion.div>
 
-        {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="relative"
           >
-            <div className="relative w-80 h-80 mx-auto">
-              {/* Glowing Border */}
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-violet-500 to-purple-600 rounded-2xl blur opacity-75"></div>
-              <div className="relative w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-purple-500/30">
-                {/* Placeholder for profile image */}
-                <div className="w-full h-full bg-gradient-to-br from-purple-900/20 to-violet-900/20 flex items-center justify-center">
-                  <div className="text-6xl text-purple-300">AP</div>
-                </div>
-              </div>
+            <div className="relative w-full aspect-square max-w-md mx-auto">
+              <Image
+                src="/images/arjun-founder.jpg"
+                alt="Arjun Prajapat"
+                fill
+                className="rounded-2xl object-cover border-4 border-purple-500/20 shadow-2xl"
+                sizes="(max-width: 768px) 90vw, 40vw"
+                priority
+              />
+              <div className="absolute inset-0 rounded-2xl border-4 border-transparent bg-gradient-to-br from-purple-500/10 to-pink-500/10 mix-blend-overlay" />
             </div>
           </motion.div>
 
-          {/* Bio Content */}
+          {/* About Content */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="space-y-6"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+            className="space-y-8"
           >
-            <div className="text-lg md:text-xl text-gray-300 leading-relaxed space-y-4">
-              <p>
-                <span className="font-semibold text-white">Arjun Prajapat</span> — Final-year BCA (AI & Data Science) student building privacy-first AI systems. 
-                Skilled in <span className="text-purple-300 font-medium">Docker, Linux, Jenkins, Python, Git, Streamlit, LangChain & Prompt Engineering</span>.
+            <motion.div variants={item}>
+              <h3 className="text-2xl font-bold text-white mb-4">Who I Am</h3>
+              <p className="text-gray-300 leading-relaxed">
+                I'm a passionate developer and entrepreneur with expertise in AI, web development, and cloud technologies. 
+                As the founder of Lifey, I'm dedicated to creating innovative solutions that make a real difference in people's lives.
               </p>
-              <p>
-                Google-certified in GenAI, NLP, Gemini & Vertex AI. My mission is to build secure, human-centric solutions that matter.
-              </p>
-            </div>
+            </motion.div>
 
-            {/* Highlights */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-purple-200">Key Expertise</h3>
-              <div className="flex flex-wrap gap-3">
-                {highlights.map((skill, index) => (
+            {/* Education Section */}
+            <motion.div 
+              variants={item}
+              className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700/50"
+            >
+              <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-6 w-6 mr-2 text-purple-400" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" 
+                  />
+                </svg>
+                Education
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-lg font-semibold text-white">BCA in AI & Data Science</h4>
+                  <p className="text-purple-300">Vivekananda Global University</p>
+                  <p className="text-gray-400 text-sm">Jaipur, Rajasthan</p>
+                  <p className="text-gray-400 text-sm mt-1">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-900/50 text-purple-200">
+                      Currently Pursuing • 4th Semester
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Skills Section */}
+            <motion.div variants={item} className="pt-4">
+              <h3 className="text-2xl font-bold text-white mb-4">My Skills</h3>
+              <div className="flex flex-wrap gap-2">
+                {['Python', 'Docker', 'Jenkins', 'LangChain', 'Gemini', 'Prompt Engineering', 'JavaScript', 'React', 'Next.js', 'Node.js', 'MongoDB', 'AWS', 'AI/ML'].map((skill, i) => (
                   <motion.span
                     key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                    className="px-4 py-2 bg-gradient-to-r from-purple-900/30 to-violet-900/30 border border-purple-500/30 rounded-full text-purple-200 text-sm font-medium backdrop-blur-sm"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 * i }}
+                    className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-800 text-gray-200 border border-gray-700"
                   >
                     {skill}
                   </motion.span>
                 ))}
-              </div>
-            </div>
-
-            {/* Location & Contact */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="pt-6 border-t border-purple-500/20"
-            >
-              <div className="flex flex-col sm:flex-row gap-4 text-gray-400">
-                <div className="flex items-center gap-2">
-                  <span className="text-purple-400">📍</span>
-                  <span>Jaipur, Rajasthan</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-purple-400">🎓</span>
-                  <span>BCA (AI & Data Science)</span>
-                </div>
               </div>
             </motion.div>
           </motion.div>
