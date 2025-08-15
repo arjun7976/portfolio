@@ -8,6 +8,7 @@ import About from '@/components/About';
 import Skills from '@/components/Skills';
 import Journey from '@/components/Journey';
 import Projects from '@/components/Projects';
+import Internship from '@/components/Internship';
 import Contact from '@/components/Contact';
 import FloatingSocial from '@/components/FloatingSocial';
 import ParticleBackground from '@/components/ParticleBackground';
@@ -54,10 +55,11 @@ export default function Home() {
         <Hero />
         <About />
         <Skills />
-        <Journey />
-        <CaseStudy />
-        <Certifications />
         <Projects />
+        <CaseStudy />
+        <Internship />
+        <Certifications />
+        <Journey />
         <Contact />
       </main>
 

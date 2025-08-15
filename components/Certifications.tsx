@@ -23,8 +23,31 @@ const Certifications = () => {
       ],
       images: [
         {
-          src: "/certificates/vanderbilt-prompt.png",
+          src: "/certificates/prompt_engineering.jpeg",
           alt: "Vanderbilt University Prompt Engineering Certificate"
+        }
+      ]
+    },
+    {
+      id: 5,
+      title: "IBM Data Science",
+      issuer: "IBM",
+      issueDate: "Mar 27, 2025",
+      credentialLink: "https://coursera.org/share/ec1f50e11b2d0ff91136ce9689d70add",
+      description: "Professional Certificate in Data Science and Machine Learning. Completed 12 comprehensive courses covering Python programming, data visualization, machine learning, and SQL. Developed hands-on skills through cloud-based assignments and a capstone project.",
+      skills: [
+        "Python Programming",
+        "Machine Learning",
+        "Data Science",
+        "SQL",
+        "Data Visualization",
+        "Statistical Analysis",
+        "Cloud Computing"
+      ],
+      images: [
+        {
+          src: "/certificates/IBM_Data_Science.jpeg",
+          alt: "IBM Data Science Certificate"
         }
       ]
     },
@@ -33,7 +56,7 @@ const Certifications = () => {
       title: "Meta Data Analyst",
       issuer: "Meta",
       issueDate: "Mar 30, 2025",
-      credentialLink: "https://coursera.org/verify/professional-cert/AXZFU7T56CT3",
+      credentialLink: "https://coursera.org/share/43230fd0b94670f865dd00f900a224bc",
       description: "In this specialization, learners developed and honed essential data analytics skills, including applying the OSEMN framework to data analysis, using SQL queries to pull data from a database, cleaning data using spreadsheets, and basic Python applied to data analytics. Learners also developed a foundational understanding of statistics and data management principles.",
       courseCount: "5 Courses",
       courses: [
@@ -54,7 +77,7 @@ const Certifications = () => {
       ],
       images: [
         {
-          src: "/certificates/meta-data-analyst.png",
+          src: "/certificates/Meta_Data_Analyst.jpeg",
           alt: "Meta Data Analyst Certificate"
         }
       ]
@@ -78,7 +101,7 @@ const Certifications = () => {
       ],
       images: [
         {
-          src: "/certificates/microsoft-powerbi.png",
+          src: "/certificates/Microsoft_Power_BI.jpeg",
           alt: "Microsoft Power BI Data Analyst Certificate"
         }
       ]
@@ -100,31 +123,8 @@ const Certifications = () => {
       ],
       images: [
         {
-          src: "/certificates/google-analytics.png",
+          src: "/certificates/Google_Data_Analytics.jpeg",
           alt: "Google Data Analytics Certificate"
-        }
-      ]
-    },
-    {
-      id: 5,
-      title: "IBM Data Science",
-      issuer: "IBM",
-      issueDate: "Mar 27, 2025",
-      credentialLink: "https://coursera.org/verify/professional-cert/WFBKH5M6Q",
-      description: "Professional Certificate in Data Science and Machine Learning. Completed 12 comprehensive courses covering Python programming, data visualization, machine learning, and SQL. Developed hands-on skills through cloud-based assignments and a capstone project.",
-      skills: [
-        "Python Programming",
-        "Machine Learning",
-        "Data Science",
-        "SQL",
-        "Data Visualization",
-        "Statistical Analysis",
-        "Cloud Computing"
-      ],
-      images: [
-        {
-          src: "/certificates/ibm-data-science.png",
-          alt: "IBM Data Science Certificate"
         }
       ]
     }

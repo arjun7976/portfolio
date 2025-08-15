@@ -15,7 +15,7 @@ const Projects = () => {
       technologies: ["Python", "Flask", "Docker", "AWS", "MongoDB", "Twilio", "Flutter", "Picovoice", "AI"],
       githubUrl: "https://github.com/arjun7976",
       liveUrl: "#",
-      featured: true,
+      featured: false,
       projectUrl: "/lifey",
       officialUrl: "https://getlifey.netlify.app/"
     },
@@ -25,7 +25,7 @@ const Projects = () => {
       technologies: ["Streamlit", "Python", "Docker", "DevOps", "Automation", "Cloud"],
       githubUrl: "https://github.com/arjun7976/SmartOps_MenuBase_Project",
       liveUrl: "https://smartopsmenu.streamlit.app/",
-      featured: true,
+      featured: false,
       projectUrl: "https://smartopsmenu.streamlit.app/",
       problemStatement: "Managing multiple AI, Machine Learning, and DevOps projects individually is time-consuming and inefficient. Developers need a centralized interface to monitor, run, and manage various automation tasks seamlessly.",
       features: [

@@ -22,11 +22,12 @@ const Navbar = () => {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
-    { name: 'Journey', href: '#journey' },
-    { name: 'Case Studies', href: '#case-studies' },
-    { name: 'Certifications', href: '#certifications' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Case Studies', href: '#case-studies' },
+    { name: 'Internship', href: '#internship' },
+    { name: 'Certifications', href: '#certifications' },
+    { name: 'Journey', href: '#journey' },
+    { name: 'Contact', href: '#contact' }
   ];
 
   const scrollToSection = (href: string) => {
